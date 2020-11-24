@@ -18,25 +18,16 @@ do
 		hCount=(( hCount++))
 	fi
 
-	if(( $tCount == 21 | $hCount == 21 ))
+	diff1 = $tCount-$hCount
+	diff2 = $hCount-$tCount
+	if(( $tCount > $hCount && $diff1>=2 && $diff2>=2 ))
 	then
 		tmp=0
+	else
+		tmp=1
 	fi
 done
 
-diff=$tCount-$hCount
 
-if(( $tCount==21 ))
-then
-	echo " Tail is $tCount times win"
-elif(( $hCount==21 ))
-	echo "Head is $hCount times win"
-
-elif((  $tCount > $hCount ))
-	diff=$tCount-$hCount
-	echo "Tail is won by $diff score"
-else
-	diff=$hCount-$tCount
-	echo "Head is won by $diff score"
-fi
-
+echo "tails count $tCount"
+echo "heads count $hCount"
